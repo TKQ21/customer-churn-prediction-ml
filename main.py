@@ -1,27 +1,37 @@
 """
-Project: Customer Churn Prediction
+Customer Churn Prediction
 Author: Mohd Kaif
+
+This project demonstrates a basic machine learning workflow
+for predicting customer churn. The implementation focuses on
+understanding data preprocessing, model training, and evaluation.
 """
 
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score
 
-# Dummy dataset
+# Sample dataset (illustrative)
 data = {
-    "age": [25, 30, 45, 35, 50],
-    "salary": [40000, 50000, 80000, 60000, 90000],
-    "churn": [0, 1, 0, 1, 0]
+    "tenure": [1, 12, 24, 36, 48, 60],
+    "monthly_charges": [30, 45, 60, 70, 80, 90],
+    "churn": [1, 1, 0, 0, 0, 0]
 }
 
 df = pd.DataFrame(data)
 
-X = df[["age", "salary"]]
+X = df[["tenure", "monthly_charges"]]
 y = df["churn"]
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.3, random_state=42
+)
 
 model = LogisticRegression()
 model.fit(X_train, y_train)
 
-print("Model trained successfully")
+predictions = model.predict(X_test)
+accuracy = accuracy_score(y_test, predictions)
+
+print(f"Model trained successfully. Accuracy: {accuracy:.2f}")
