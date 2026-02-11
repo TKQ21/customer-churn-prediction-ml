@@ -1,5 +1,7 @@
 🟢 1️⃣ GITHUB README (FINAL – REAL WORLD PROJECT)
+
 📌 Customer Churn Prediction Application
+
 🔍 Project Overview
 
 This project is a real-world machine learning web application designed to predict whether a customer is likely to churn (leave a service) based on their demographic, contract, and billing information.
